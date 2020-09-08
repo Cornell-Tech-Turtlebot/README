@@ -4,17 +4,22 @@ As of September 2020, our Trash-picking Turtlebot can autonomously navigate arou
 
 It requires these packages:
 - Object tracking (https://github.com/Cornell-Tech-Turtlebot/object_tracking): Detect different objects including water bottle & trashcan. Localize positions of those objects on the map. Drive the robot toward those objects.
+- darknet_ros (https://github.com/leggedrobotics/darknet_ros): YOLO on ROS. Detect different objects including the water bottle.
+- ar_track_alvar (http://wiki.ros.org/ar_track_alvar): Detect AR tag that is sticked to the trashcan.
 - Bottle manipulator (https://github.com/Cornell-Tech-Turtlebot/bottle_manipulator): Control the manipulator to pickup & drop off the water bottle.
-- Patrol (https://github.com/Cornell-Tech-Turtlebot/patrol): Randomly patrol around the building.
-- Orchestrator (https://github.com/Cornell-Tech-Turtlebot/orchestrator): Orchestrate other packages. So for example, when `object_tracking` successfully drive the robot to approach the bottle, `orcheschator` will tell `bottle_manipulator` to start picking the bottle up.
+- explore_lite (http://wiki.ros.org/explore_lite): Autonomously explore & map an unknown building.  
+- Patrol (https://github.com/Cornell-Tech-Turtlebot/patrol): Randomly patrol around the mapped building.
+- Orchestrator (https://github.com/Cornell-Tech-Turtlebot/orchestrator): Orchestrate other packages. For example, when `object_tracking` successfully drives the robot to approach the bottle, `orcheschator` will tell `bottle_manipulator` to start picking the bottle up.
 
 
 # Setup
 
 ## Robot:
 The Waffle Pi with Open Manipulator is already fully setup. In case you need to setup it again, follow this tutorial: 
-https://emanual.robotis.com/docs/en/platform/turtlebot3/setup/#setup
-https://emanual.robotis.com/docs/en/platform/turtlebot3/manipulation/#manipulation
+
+- https://emanual.robotis.com/docs/en/platform/turtlebot3/setup/#setup
+- https://emanual.robotis.com/docs/en/platform/turtlebot3/manipulation/#manipulation
+- Calibrate the camera (important for tag detection to work): https://github.com/UbiquityRobotics/raspicam_node
 
 ## Your laptop:
 Follow this to setup ROS on your laptop:
