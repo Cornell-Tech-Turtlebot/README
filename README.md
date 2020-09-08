@@ -66,9 +66,26 @@ In case you need to setup it again, follow this:
 # How to run
 
 ## On Robot:
+Run each command in a separate Terminal window:
 
-                
-
+        roslaunch turtlebot3_bringup turtlebot3_robot.launch
+        roslaunch turtlebot3_bringup turtlebot3_rpicamera_2.launch    
+        
+## On Server:
+Run each command in a separate Terminal window:
+        
+        rosrun image_transport republish compressed in:=/raspicam_node/image out:=/raspicam_node/image_raw
+        rosrun tf static_transform_publisher 0 0 0 0 0 0 camera_rgb_optical_frame raspicam 100
+        roslaunch object_tracking turtlebot3_slam.launch
+        roslaunch turtlebot3_navigation move_base.launch
+        roslaunch object_tracking ar_track_alvar.launch
+        roslaunch turtlebot3_manipulation_bringup turtlebot3_manipulation_bringup.launch
+        roslaunch turtlebot3_manipulation_moveit_config move_group.launch
+        rosrun bottle_manipulation execute_trajectory.py
+        rosrun object_tracking detect_trashcan.py
+        rosrun object_tracking find_trashcan.py
+        rosrun object_tracking find_trash.py
+        roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch 
 
 # Room for improvement
 
