@@ -15,7 +15,12 @@ It requires these packages:
 # Setup
 
 ## Robot:
-The Waffle Pi with Open Manipulator is already fully setup. In case you need to setup it again, follow this tutorial: 
+The robots already fully setup. The password to SSH into the robots:
+
+- Waffle Pi: `admin`
+- Waffle Pi with Open Manipulator: `turtlebot`
+
+In case you need to setup the robots again, follow this tutorial: 
 
 - https://emanual.robotis.com/docs/en/platform/turtlebot3/setup/#setup
 - https://emanual.robotis.com/docs/en/platform/turtlebot3/manipulation/#manipulation
@@ -59,6 +64,10 @@ In case you need to setup it again, follow this:
    
 
 # How to run
+
+## On Robot:
+
+                
 
 
 # Room for improvement
