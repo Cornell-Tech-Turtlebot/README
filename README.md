@@ -28,15 +28,16 @@ https://github.com/travers-rhodes/gazebo_tensorflow_turtlebot_docker#connection-
 The workspace `catkin_ws` on server is fully setup. In case you need to setup it again, follow this:
 
 - Setup ROS on server:
-    https://emanual.robotis.com/docs/en/platform/turtlebot3/setup/#setup
-    https://emanual.robotis.com/docs/en/platform/turtlebot3/manipulation/#manipulation
+        https://emanual.robotis.com/docs/en/platform/turtlebot3/setup/#setup
+        https://emanual.robotis.com/docs/en/platform/turtlebot3/manipulation/#manipulation
 
 - Clone necessary repos:
-    cd /catkin_ws/src
-    git clone https://github.com/Cornell-Tech-Turtlebot/object_tracking.git
-    git clone https://github.com/Cornell-Tech-Turtlebot/bottle_manipulator.git
-    git clone https://github.com/Cornell-Tech-Turtlebot/patrol.git
-    git clone https://github.com/Cornell-Tech-Turtlebot/orchestrator
+
+        cd /catkin_ws/src
+        git clone https://github.com/Cornell-Tech-Turtlebot/object_tracking.git
+        git clone https://github.com/Cornell-Tech-Turtlebot/bottle_manipulator.git
+        git clone https://github.com/Cornell-Tech-Turtlebot/patrol.git
+        git clone https://github.com/Cornell-Tech-Turtlebot/orchestrator
 
 # How to run
 
