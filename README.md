@@ -30,19 +30,28 @@ Follow this to get your laptop into the same VPN as the robot & server:
 https://github.com/travers-rhodes/gazebo_tensorflow_turtlebot_docker#connection-instructions
 
 ## Server
-The workspace `catkin_ws` on server is fully setup. In case you need to setup it again, follow this:
+The workspace `catkin_ws` on server is fully setup. It's best to leave it there or make a backup of that folder, since there were certain small tweaks we made that we may miss in this documentation. It's pretty hard to config things to make the robot works smoothly!
+
+In case you need to setup it again, follow this. Again, we may miss certain tweaks in this documentation:
 
 - Setup ROS on server:
         https://emanual.robotis.com/docs/en/platform/turtlebot3/setup/#setup
         https://emanual.robotis.com/docs/en/platform/turtlebot3/manipulation/#manipulation
 
-- Clone necessary repos:
+- Install necessary packages:
 
         cd /catkin_ws/src
         git clone https://github.com/Cornell-Tech-Turtlebot/object_tracking.git
+        git clone --recursive https://github.com/leggedrobotics/darknet_ros.git
+        git clone https://github.com/ros-perception/ar_track_alvar.git
+        sudo apt install ros-${ROS_DISTRO}-multirobot-map-merge ros-${ROS_DISTRO}-explore-lite
         git clone https://github.com/Cornell-Tech-Turtlebot/bottle_manipulator.git
         git clone https://github.com/Cornell-Tech-Turtlebot/patrol.git
         git clone https://github.com/Cornell-Tech-Turtlebot/orchestrator
+        
+ - Build the workspace:
+        `catkin build` or `catkin_make_isolated`
+        
 
 # How to run
 
