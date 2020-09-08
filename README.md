@@ -50,8 +50,13 @@ In case you need to setup it again, follow this. Again, we may miss certain twea
         git clone https://github.com/Cornell-Tech-Turtlebot/orchestrator
         
  - Build the workspace:
-        `catkin build` or `catkin_make_isolated`
-        
+ 
+        cd /catkin_ws
+        catkin build
+        source devel/setup.bash
+
+   If `catkin_build` doesn't work, try `catkin_make_isolated` then `source devel_isolated/setup.bash`
+   
 
 # How to run
 
