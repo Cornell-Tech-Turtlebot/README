@@ -1,6 +1,6 @@
 # Introduction
 
-As of September 2020, our Trash-picking Turtlebot can autonomously navigate around an unknown building, draw a map, detect & pickup water bottle, then drop into trashcan. See the videos here: https://drive.google.com/drive/folders/1VAmSW8Z5EUJZb4Y-RXb9zj3yCQSbMGp9
+As of September 2020, our Trash-picking Turtlebot can navigate around an unknown building, draw a map, detect & pickup water bottle, then drop into trashcan. See the videos here: https://drive.google.com/drive/folders/1VAmSW8Z5EUJZb4Y-RXb9zj3yCQSbMGp9
 
 It requires these packages:
 - Object tracking (https://github.com/Cornell-Tech-Turtlebot/object_tracking): Detect different objects including water bottle & trashcan. Localize positions of those objects on the map. Drive the robot toward those objects.
@@ -11,6 +11,7 @@ It requires these packages:
 - Patrol (https://github.com/Cornell-Tech-Turtlebot/patrol): Randomly patrol around the mapped building.
 - Orchestrator (https://github.com/Cornell-Tech-Turtlebot/orchestrator): Orchestrate other packages. For example, when `object_tracking` successfully drives the robot to approach the bottle, `orcheschator` will tell `bottle_manipulator` to start picking the bottle up.
 
+Follow this guide step-by-step to replicate what you see in the videos above.
 
 # Setup
 
@@ -63,16 +64,17 @@ In case you need to setup it again, follow this:
    If `catkin_build` doesn't work, try `catkin_make_isolated` then `source devel_isolated/setup.bash`
    
 
-# How to run
+# Bring up
+Before operating the robot, we need to bring up all nesscessary packages.
 
 ## On Robot:
-Run each command in a separate Terminal window:
+Run each command in a separate Terminal window to bring up the robot:
 
         roslaunch turtlebot3_bringup turtlebot3_robot.launch
         roslaunch turtlebot3_bringup turtlebot3_rpicamera_2.launch    
         
 ## On Server:
-Run each command in a separate Terminal window:
+Run each command in a separate Terminal window to bring up the necessary packages:
         
         rosrun image_transport republish compressed in:=/raspicam_node/image out:=/raspicam_node/image_raw
         rosrun tf static_transform_publisher 0 0 0 0 0 0 camera_rgb_optical_frame raspicam 100
@@ -86,6 +88,15 @@ Run each command in a separate Terminal window:
         rosrun object_tracking find_trashcan.py
         rosrun object_tracking find_trash.py
         roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch 
+
+# Semi-autonomous operation
+In this mode, you need to tele-op the robot in the beginning for it to see the water bottle and trashcan. Once it see those items, it will remember their locations even if you drive it to another location in the building. It can then be switched to fully autonomous mode: automatically approach water bottle --> pickup bottle --> approach trashcan --> dropoff bottle.
+
+
+
+# Fully autonomous operation
+
+
 
 # Room for improvement
 
