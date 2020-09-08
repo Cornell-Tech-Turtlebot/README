@@ -30,9 +30,9 @@ Follow this to get your laptop into the same VPN as the robot & server:
 https://github.com/travers-rhodes/gazebo_tensorflow_turtlebot_docker#connection-instructions
 
 ## Server:
-The workspace `catkin_ws` on server is fully setup. It's best to leave it there or make a backup of that folder, since there were certain small tweaks we made that we may miss in this documentation. It's pretty hard to config things to make the robot works smoothly!
+The workspace `catkin_ws` on server is fully setup. It's best to leave it there or make a backup of that folder, in case we missed to document certain configuration in this documentation. It's pretty hard to config things to make the robot works smoothly!
 
-In case you need to setup it again, follow this. Again, we try our best to capture everything in this documentation, but we may miss certain tweaks:
+In case you need to setup it again, follow this:
 
 - Setup ROS on server:
         https://emanual.robotis.com/docs/en/platform/turtlebot3/setup/#setup
