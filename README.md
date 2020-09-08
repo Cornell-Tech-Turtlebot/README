@@ -11,6 +11,13 @@ It requires these packages:
 
 # Setup
 
+## On robot:
+The Waffle Pi with Open Manipulator is already fully setup. In case you need to setup it again, follow this tutorial: 
+https://emanual.robotis.com/docs/en/platform/turtlebot3/setup/#setup
+https://emanual.robotis.com/docs/en/platform/turtlebot3/manipulation/#manipulation
+
+## On server
+
 
 
 
