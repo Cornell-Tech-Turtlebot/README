@@ -109,7 +109,7 @@ On **Server**, run this command:
 The robot will automatically explore & map unknown areas of building,  until there is no unknown area left.
 
 # 5. Semi-autonomous trash picking
-In this mode, you need to tele-op the robot in the beginning for it to see the water bottle and trashcan. Once the robot see those items, it will remember their locations, even if you drive the robot to look away. It can then execute this sequence: automatically return to find & approach water bottle --> pickup bottle --> find & approach trashcan --> dropoff bottle.
+In this mode, you need to tele-op the robot in the beginning for it to see the water bottle and trashcan. Once the robot see those items, it will remember their locations, even if you drive the robot to look away. It can then execute this sequence: automatically return to find & approach water bottle --> pickup bottle --> find & approach trashcan --> dropoff bottle. This was what we did in the video demos you see above.
 
 Follow these steps:
 
@@ -125,13 +125,27 @@ On **Server**, run each command in a separate Terminal window:
         rosrun object_tracking find_trashcan.py
         rosrun object_tracking find_trash.py
 
-# 5.2 Teleop the robot: 
+## 5.2 Teleop the robot: 
 Drive the robot so that it sees the water bottle and trashcan (with the AR tag sticked on it). Once the robot see those items, it will remember their locations.
 
-# 5.3 Send command to the robot: 
-By publishing message to `/state` topic. You can do this in Terminal: 
+## 5.3 Send command to the robot: 
+By publishing message to `/state` topic. You can do this in Terminal. Open a new Terminal window, then run these commands: 
 
+Ask the robot to approach the bottle:
 
+        rostopic pub /state std_msgs/String approach_trash
+        
+Once the robot approached the bottle, press `Ctr + C` of `Command + C` to terminate. Then run another command to ask the robot to pickup the bottle:
+
+        rostopic pub /state std_msgs/String pickup_trash
+        
+Once the robot picked up the bottle, press `Ctr + C` of `Command + C` to terminate. Then run another command to ask the robot to approach the trashcan:
+
+        rostopic pub /state std_msgs/String approach_trashcan
+        
+Once the robot approached the trashcan, press `Ctr + C` of `Command + C` to terminate. Then run another command to ask the robot to drop the bottle into the trashcan:
+
+        rostopic pub /state std_msgs/String drop_trash
 
 # Fully autonomous operation
 
