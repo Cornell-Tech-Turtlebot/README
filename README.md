@@ -64,26 +64,39 @@ In case you need to setup it again, follow this:
    If `catkin_build` doesn't work, try `catkin_make_isolated` then `source devel_isolated/setup.bash`
    
 
-# Bring up
-Before operating the robot, we need to bring up all nesscessary packages.
-
+# Bring up basic packages
 ## On Robot:
-Run each command in a separate Terminal window to bring up the robot:
+Run each command below in a separate Terminal window:
 
         roslaunch turtlebot3_bringup turtlebot3_robot.launch
         roslaunch turtlebot3_bringup turtlebot3_rpicamera_2.launch    
-        
+
 ## On Server:
-Run each command in a separate Terminal window to bring up the necessary packages:
+Run each command below in a separate Terminal window:
         
         rosrun image_transport republish compressed in:=/raspicam_node/image out:=/raspicam_node/image_raw
         rosrun tf static_transform_publisher 0 0 0 0 0 0 camera_rgb_optical_frame raspicam 100
         roslaunch object_tracking turtlebot3_slam.launch
         roslaunch turtlebot3_navigation move_base.launch
-        roslaunch object_tracking ar_track_alvar.launch
         roslaunch turtlebot3_manipulation_bringup turtlebot3_manipulation_bringup.launch
         roslaunch turtlebot3_manipulation_moveit_config move_group.launch
+        vglrun rviz
+
+
+
+# Autonomous mapping of an unknown building
+On **Server**, run this command:
+        roslaunch explore_lite explore.launch
+
+The robot will automatically explore & map unknown areas of building,  until there is no unknown area left.
+
+## On Server:
+Run each command in a separate Terminal window to bring up the necessary packages:
+        
+        
         rosrun bottle_manipulation execute_trajectory.py
+        roslaunch object_tracking ar_track_alvar.launch
+        roslaunch object_tracking darknet_ros.launch
         rosrun object_tracking detect_trashcan.py
         rosrun object_tracking find_trashcan.py
         rosrun object_tracking find_trash.py
@@ -99,6 +112,11 @@ In this mode, you need to tele-op the robot in the beginning for it to see the w
 
 
 # Room for improvement
+
+## Make .rosinstall file to install all necessary packages at once
+
+## Make launch file to launch all neccessary packages at once
+
 
 
 
