@@ -33,10 +33,12 @@ In case you need to setup the robots again, follow this tutorial:
 
 - https://emanual.robotis.com/docs/en/platform/turtlebot3/setup/#setup
 - https://emanual.robotis.com/docs/en/platform/turtlebot3/manipulation/#manipulation
-- Calibrate the camera (important for tag detection to work): https://github.com/UbiquityRobotics/raspicam_node
+- Calibrate the camera (important for tag detection to work): 
+https://github.com/UbiquityRobotics/raspicam_node
+http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration
 
 ## Server (optional):
-The workspace `/catkin_ws` on server is fully setup, so it's best to just use it. If you decide to create a new workspace or virtual machine, remember to backup the previous `/catkin_ws` folder. There might be certain small configs we made to get things working, and we may missed it in this documentation. It's pretty hard to config things to make the server & robot work smoothly!
+The workspace `/catkin_ws` on server is fully setup, so it's best to just use it. If you decide to create a new workspace or virtual machine, remember to backup the previous `/catkin_ws` folder. There might be certain small configs we made to get things working, and we might miss it in this documentation. It's pretty hard to config things to make the server & robot work smoothly!
 
 In case you need to setup it again, follow this. Again, this may not include some small configs we made:
 
@@ -63,6 +65,17 @@ In case you need to setup it again, follow this. Again, this may not include som
 
    If `catkin_build` doesn't work, try `catkin_make_isolated` then `source devel_isolated/setup.bash`
    
+## Physical equipments:
+You need 1 water bottle & 1 trashcan. Print this AR tag and stick it to the trashcan:
+https://github.com/Cornell-Tech-Turtlebot/object_tracking/blob/master/markers/MarkerData_0.png
+
+Measure the side of the black square of the AR tag, in centimeter. Then on the **Sever**:
+
+        cd /catkin_ws/src/object_tracking/launch/ar_track_alvar.launch
+        
+Change the number in the second line to the side of the black square you've just measured. It should look something like this:
+
+        <arg name="marker_size" default="20" />
 
 # Bring up basic packages
 ## On Robot:
@@ -89,6 +102,9 @@ On **Server**, run this command:
         roslaunch explore_lite explore.launch
 
 The robot will automatically explore & map unknown areas of building,  until there is no unknown area left.
+
+# Semi-autonomous trash picking
+Under this mode, you need to tele-operate the robot to make it look at the trashcan & bottle. 
 
 ## On Server:
 Run each command in a separate Terminal window to bring up the necessary packages:
