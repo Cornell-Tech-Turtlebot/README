@@ -179,7 +179,7 @@ To launch `orchestrator` package & `patrol` package, run each of this in a new T
 As you can see in Section 2, we need to install a bunch of packages. It's better to group them into a rosinstall file, so we can just run 1 file to install all of them.
 
 ## Make launch file to launch all neccessary packages at once
-As you can see, we need to launch a bunch of packages in seperater Terminal window. It's better to group them into 1 launch file and launch all at once.
+As you can see, we need to launch a bunch of packages in seperate Terminal window. It's better to group them into 1 launch file and launch all at once.
 
 ## Finish orchestrator package
 
