@@ -69,7 +69,7 @@ In case you need to setup it again, follow this. Again, this may not include som
 You need 1 water bottle & 1 trashcan. Print this AR tag and stick it to the trashcan:
 https://github.com/Cornell-Tech-Turtlebot/object_tracking/blob/master/markers/MarkerData_0.png
 
-Measure the side of the black square of the AR tag, in centimeter. Then on the **Sever**:
+Measure the side of the black square of the AR tag, in centimeter. Then run this on the **Server**:
 
         cd /catkin_ws/src/object_tracking/launch/ar_track_alvar.launch
         
@@ -179,9 +179,9 @@ To launch `orchestrator` package & `patrol` package, run each of this in a new T
 As you can see in Section 2, we need to install a bunch of packages. It's better to group them into a rosinstall file, so we can just run 1 file to install all of them.
 
 ## Make launch file to launch all neccessary packages at once
+As you can see, we need to launch a bunch of packages in seperater Terminal window. It's better to group them into 1 launch file and launch all at once.
 
-
-## Tag detection is not 100% accurate right now
+## Tag detection is not 100% accurate
 
 
 
