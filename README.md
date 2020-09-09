@@ -102,14 +102,14 @@ Better yet, you can use Rviz to set a location in the map for the robot to move 
 http://wiki.ros.org/rviz/UserGuide#A2D_Nav_Goal_.28Keyboard_shortcut:_g.29
 
 # 4. Autonomous mapping of an unknown building
-On **Server**, run this command:
+On **Server**, run this command in a new Terminal window:
 
         roslaunch explore_lite explore.launch
 
 The robot will automatically explore & map unknown areas of building,  until there is no unknown area left.
 
 # 5. Semi-autonomous trash picking
-In this mode, you need to tele-op the robot in the beginning for it to see the water bottle and trashcan. Once the robot see those items, it will remember their locations, even if you drive the robot to look away. It can then execute this sequence: automatically return to find & approach water bottle --> pickup bottle --> find & approach trashcan --> dropoff bottle. This was what we did in the video demos you see above.
+In this mode, you need to tele-op the robot in the beginning for it to see the water bottle and trashcan. Once the robot see those items, it will remember their locations, even if you drive the robot to look away. It can then automatically return to find & approach water bottle --> pickup bottle --> find & approach trashcan --> dropoff bottle. This was what we did in the video demos you see above.
 
 Follow these steps:
 
@@ -147,16 +147,41 @@ Once the robot approached the trashcan, press `Ctr + C` of `Command + C` to term
 
         rostopic pub /state std_msgs/String drop_trash
 
-# Fully autonomous operation
+# 6. Fully autonomous trash picking
+For the robot to be fully autonomous, we need to run the `orchestrator` package. This will orchestrate starting / stopping other packages & actions of the robot. We have written the code but didn't have enough time to test it before project ends. So you have the opportunity to finish it :)
+
+The `orchestrator` package communicates with other packages via `/state` topic. All packages subscribe & publish to that `/state` topic. It works like this:
+
+- When `explore_lite` finishes mapping the building, it will send `explore_done` message to `/state` topic
+- When `orchestrator.py` receives that message, it will send `patrol` message to `/state` topic
+- When `patrol` package receives that message, it will make the robot patrol (randomly go around the building)
+- During patrolling, `detect_trashcan.py` and `detect_trash.py` will detect trashcan & bottle. Once detected, they will send `trashcan_detected` and `trash_detected` messages to `/state` topic
+- When `orchestrator.py` receives those messages, it will send `approach_trash` message to `/state` topic
+- When `find_trash.py` receives that message, it will drive the robot to approach the bottle, then send `approach_trash_done` message
+- When `orchestrator.py` receives that message, it will send `pickup_trash` message to `/state` topic
+- When `execute_trajectory.py` receives that message, it will make the robot pickup the bottle, then send `pickup_trash_done` message
+- When `orchestrator.py` receives that message, it will send `approach_trashcan` message to `/state` topic
+- When `find_trashcan.py` receives that message, it will drive the robot to approach the trashcan, then send `approach_trashcan_done` message
+- When `orchestrator.py` receives that message, it will send `drop_trash` message to `/state` topic
+- When `execute_trajectory.py` receives that message, it will make the robot drop the bottle into the trashcan
+
+Take a look at this code file & you will understand: https://github.com/Cornell-Tech-Turtlebot/orchestrator/blob/master/src/orchestrator.py
+
+To launch `orchestrator` package & `patrol` package, run each of this in a new Terminal window:
+
+        roslaunch patrol random_nav.launch
+        roslaunch orchestrator orchestrator.py
 
 
-
-# Room for improvement
+# 7. Room for improvement
 
 ## Make .rosinstall file to install all necessary packages at once
+As you can see in Section 2, we need to install a bunch of packages. It's better to group them into a rosinstall file, so we can just run 1 file to install all of them.
 
 ## Make launch file to launch all neccessary packages at once
 
+
+## Tag detection is not 100% accurate right now
 
 
 
