@@ -16,7 +16,7 @@ Follow this guide step-by-step to replicate what you see in the videos above.
 # Setup
 
 ## Robot:
-The robots already fully setup. The password to SSH into the robots:
+The robots are already fully setup. The passwords to SSH into the robots:
 
 - Waffle Pi: `admin`
 - Waffle Pi with Open Manipulator: `turtlebot`
@@ -36,9 +36,9 @@ Follow this to get your laptop into the same VPN as the robot & server:
 https://github.com/travers-rhodes/gazebo_tensorflow_turtlebot_docker#connection-instructions
 
 ## Server:
-The workspace `catkin_ws` on server is fully setup. It's best to leave it there or make a backup of that folder, in case we missed to document certain configuration in this documentation. It's pretty hard to config things to make the robot works smoothly!
+The workspace `/catkin_ws` on server is fully setup. It's best to just use it, or make a backup of that folder if you decide to create a new workspace or virtual machine. There might be certain small configs we made to get things working, and we may missed it in this documentation. It's pretty hard to config things to make the server & robot work smoothly!
 
-In case you need to setup it again, follow this:
+In case you need to setup it again, follow this. Again, this may not include some small configs we made:
 
 - Setup ROS on server:
         https://emanual.robotis.com/docs/en/platform/turtlebot3/setup/#setup
