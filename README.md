@@ -91,11 +91,14 @@ Run each command below in a separate Terminal window:
         rosrun tf static_transform_publisher 0 0 0 0 0 0 camera_rgb_optical_frame raspicam 100
         roslaunch object_tracking turtlebot3_slam.launch
         roslaunch turtlebot3_navigation move_base.launch
-        roslaunch turtlebot3_manipulation_bringup turtlebot3_manipulation_bringup.launch
-        roslaunch turtlebot3_manipulation_moveit_config move_group.launch
+        roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch 
         vglrun rviz
 
 When Rviz opens, click `File` --> `Open Config` --> navigate to `/catkin_ws/src/object_tracking/rviz/` --> select `object_tracking.rviz`. You will see Rviz interface displaying all neccessary information.
+
+You can control the robot using teleop, in the Terminal window that you run `roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch`.
+Better yet, you can use Rviz to set a location in the map for the robot to move there. Follow this instruction:
+http://wiki.ros.org/rviz/UserGuide#A2D_Nav_Goal_.28Keyboard_shortcut:_g.29
 
 # Autonomous mapping of an unknown building
 On **Server**, run this command:
@@ -104,22 +107,20 @@ On **Server**, run this command:
 The robot will automatically explore & map unknown areas of building,  until there is no unknown area left.
 
 # Semi-autonomous trash picking
-Under this mode, you need to tele-operate the robot to make it look at the trashcan & bottle. 
+In this mode, you need to tele-op the robot in the beginning for it to see the water bottle and trashcan. Once the robot see those items, it will remember their locations, even if you drive the robot to another place. It can then automatically execute these sequence: automatically return to find & approach water bottle --> pickup bottle --> find & approach trashcan --> dropoff bottle.
 
 ## On Server:
-Run each command in a separate Terminal window to bring up the necessary packages:
-        
-        
+Run each command in a separate Terminal window to bring up the necessary packages:        
+        roslaunch turtlebot3_manipulation_bringup turtlebot3_manipulation_bringup.launch
+        roslaunch turtlebot3_manipulation_moveit_config move_group.launch
         rosrun bottle_manipulation execute_trajectory.py
         roslaunch object_tracking ar_track_alvar.launch
         roslaunch object_tracking darknet_ros.launch
         rosrun object_tracking detect_trashcan.py
         rosrun object_tracking find_trashcan.py
         rosrun object_tracking find_trash.py
-        roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch 
+        
 
-# Semi-autonomous operation
-In this mode, you need to tele-op the robot in the beginning for it to see the water bottle and trashcan. Once it see those items, it will remember their locations even if you drive it to another location in the building. It can then be switched to fully autonomous mode: automatically approach water bottle --> pickup bottle --> approach trashcan --> dropoff bottle.
 
 
 
