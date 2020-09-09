@@ -1,4 +1,4 @@
-# Introduction
+# 1. Introduction
 
 As of September 2020, our Trash-picking Turtlebot can autonomously navigate around an unknown building, draw a map, detect & pickup water bottle, then drop into trashcan. See the videos here: https://drive.google.com/drive/folders/1VAmSW8Z5EUJZb4Y-RXb9zj3yCQSbMGp9
 
@@ -13,9 +13,9 @@ It requires these packages:
 
 Follow this guide step-by-step to replicate what you see in the videos above.
 
-# Setup
+# 2. Setup
 
-## Your laptop:
+## 2.1 Your laptop:
 Follow this to setup ROS on your laptop:
 https://emanual.robotis.com/docs/en/platform/turtlebot3/setup/#setup
 https://emanual.robotis.com/docs/en/platform/turtlebot3/manipulation/#manipulation
@@ -23,7 +23,7 @@ https://emanual.robotis.com/docs/en/platform/turtlebot3/manipulation/#manipulati
 Follow this to get your laptop into the same VPN as the robot & server: 
 https://github.com/travers-rhodes/gazebo_tensorflow_turtlebot_docker#connection-instructions
 
-## Robot (optional):
+## 2.2 Robot (optional):
 The robots are already fully setup. The passwords to SSH into the robots:
 
 - Waffle Pi: `admin`
@@ -37,7 +37,7 @@ In case you need to setup the robots again, follow this tutorial:
 https://github.com/UbiquityRobotics/raspicam_node
 http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration
 
-## Server (optional):
+## 2.3 Server (optional):
 The workspace `/catkin_ws` on server is fully setup, so it's best to just use it. If you decide to create a new workspace or virtual machine, remember to backup the previous `/catkin_ws` folder. There might be certain small configs we made to get things working, and we might miss it in this documentation. It's pretty hard to config things to make the server & robot work smoothly!
 
 In case you need to setup it again, follow this. Again, this may not include some small configs we made:
@@ -65,7 +65,7 @@ In case you need to setup it again, follow this. Again, this may not include som
 
    If `catkin_build` doesn't work, try `catkin_make_isolated` then `source devel_isolated/setup.bash`
    
-## Physical equipments:
+## 2.4 Physical equipments:
 You need 1 water bottle & 1 trashcan. Print this AR tag and stick it to the trashcan:
 https://github.com/Cornell-Tech-Turtlebot/object_tracking/blob/master/markers/MarkerData_0.png
 
@@ -77,14 +77,14 @@ Change the number in the second line to the side of the black square you've just
 
         <arg name="marker_size" default="20" />
 
-# Bring up basic packages
-## On Robot:
+# 3. Launch basic packages
+## 3.1 On Robot:
 Run each command below in a separate Terminal window:
 
         roslaunch turtlebot3_bringup turtlebot3_robot.launch
         roslaunch turtlebot3_bringup turtlebot3_rpicamera_2.launch    
 
-## On Server:
+## 3.2 On Server:
 Run each command below in a separate Terminal window:
         
         rosrun image_transport republish compressed in:=/raspicam_node/image out:=/raspicam_node/image_raw
@@ -97,20 +97,25 @@ Run each command below in a separate Terminal window:
 When Rviz opens, click `File` --> `Open Config` --> navigate to `/catkin_ws/src/object_tracking/rviz/` --> select `object_tracking.rviz`. You will see Rviz interface displaying all neccessary information.
 
 You can control the robot using teleop, in the Terminal window that you run `roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch`.
+
 Better yet, you can use Rviz to set a location in the map for the robot to move there. Follow this instruction:
 http://wiki.ros.org/rviz/UserGuide#A2D_Nav_Goal_.28Keyboard_shortcut:_g.29
 
-# Autonomous mapping of an unknown building
+# 4. Autonomous mapping of an unknown building
 On **Server**, run this command:
+
         roslaunch explore_lite explore.launch
 
 The robot will automatically explore & map unknown areas of building,  until there is no unknown area left.
 
-# Semi-autonomous trash picking
-In this mode, you need to tele-op the robot in the beginning for it to see the water bottle and trashcan. Once the robot see those items, it will remember their locations, even if you drive the robot to another place. It can then automatically execute these sequence: automatically return to find & approach water bottle --> pickup bottle --> find & approach trashcan --> dropoff bottle.
+# 5. Semi-autonomous trash picking
+In this mode, you need to tele-op the robot in the beginning for it to see the water bottle and trashcan. Once the robot see those items, it will remember their locations, even if you drive the robot to look away. It can then execute this sequence: automatically return to find & approach water bottle --> pickup bottle --> find & approach trashcan --> dropoff bottle.
 
-## On Server:
-Run each command in a separate Terminal window to bring up the necessary packages:        
+Follow these steps:
+
+## 5.1 Launch packages:
+On **Server**, run each command in a separate Terminal window:   
+
         roslaunch turtlebot3_manipulation_bringup turtlebot3_manipulation_bringup.launch
         roslaunch turtlebot3_manipulation_moveit_config move_group.launch
         rosrun bottle_manipulation execute_trajectory.py
@@ -119,8 +124,12 @@ Run each command in a separate Terminal window to bring up the necessary package
         rosrun object_tracking detect_trashcan.py
         rosrun object_tracking find_trashcan.py
         rosrun object_tracking find_trash.py
-        
 
+# 5.2 Teleop the robot: 
+Drive the robot so that it sees the water bottle and trashcan (with the AR tag sticked on it). Once the robot see those items, it will remember their locations.
+
+# 5.3 Send command to the robot: 
+By publishing message to `/state` topic. You can do this in Terminal: 
 
 
 
