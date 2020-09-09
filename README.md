@@ -15,7 +15,15 @@ Follow this guide step-by-step to replicate what you see in the videos above.
 
 # Setup
 
-## Robot:
+## Your laptop:
+Follow this to setup ROS on your laptop:
+https://emanual.robotis.com/docs/en/platform/turtlebot3/setup/#setup
+https://emanual.robotis.com/docs/en/platform/turtlebot3/manipulation/#manipulation
+
+Follow this to get your laptop into the same VPN as the robot & server: 
+https://github.com/travers-rhodes/gazebo_tensorflow_turtlebot_docker#connection-instructions
+
+## Robot (optional):
 The robots are already fully setup. The passwords to SSH into the robots:
 
 - Waffle Pi: `admin`
@@ -27,16 +35,8 @@ In case you need to setup the robots again, follow this tutorial:
 - https://emanual.robotis.com/docs/en/platform/turtlebot3/manipulation/#manipulation
 - Calibrate the camera (important for tag detection to work): https://github.com/UbiquityRobotics/raspicam_node
 
-## Your laptop:
-Follow this to setup ROS on your laptop:
-https://emanual.robotis.com/docs/en/platform/turtlebot3/setup/#setup
-https://emanual.robotis.com/docs/en/platform/turtlebot3/manipulation/#manipulation
-
-Follow this to get your laptop into the same VPN as the robot & server: 
-https://github.com/travers-rhodes/gazebo_tensorflow_turtlebot_docker#connection-instructions
-
-## Server:
-The workspace `/catkin_ws` on server is fully setup. It's best to just use it, or make a backup of that folder if you decide to create a new workspace or virtual machine. There might be certain small configs we made to get things working, and we may missed it in this documentation. It's pretty hard to config things to make the server & robot work smoothly!
+## Server (optional):
+The workspace `/catkin_ws` on server is fully setup, so it's best to just use it. If you decide to create a new workspace or virtual machine, remember to backup the previous `/catkin_ws` folder. There might be certain small configs we made to get things working, and we may missed it in this documentation. It's pretty hard to config things to make the server & robot work smoothly!
 
 In case you need to setup it again, follow this. Again, this may not include some small configs we made:
 
@@ -82,7 +82,7 @@ Run each command below in a separate Terminal window:
         roslaunch turtlebot3_manipulation_moveit_config move_group.launch
         vglrun rviz
 
-
+When Rviz opens, click `File` --> `Open Config` --> navigate to `/catkin_ws/src/object_tracking/rviz/` --> select `object_tracking.rviz`. You will see Rviz interface displaying all neccessary information.
 
 # Autonomous mapping of an unknown building
 On **Server**, run this command:
