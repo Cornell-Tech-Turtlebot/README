@@ -170,7 +170,7 @@ Take a look at this code file & you will understand: https://github.com/Cornell-
 To launch `orchestrator` package & `patrol` package, run each of this in a new Terminal window:
 
         roslaunch patrol random_nav.launch
-        roslaunch orchestrator orchestrator.py
+        rosrun orchestrator orchestrator.py
 
 
 # 7. Room for improvement
@@ -182,10 +182,35 @@ As you can see in Section 2, we need to install a bunch of packages. It's better
 As you can see, we need to launch a bunch of packages in seperate Terminal window. It's better to group them into 1 launch file and launch all at once.
 
 ## Finish orchestrator package
+As mentioned in section 6, we have written the code but haven't tested. We entrusted it to you to finish it :)
 
+## Tag detection is not accurate sometimes
+Currently, we are using AR tag detection engine called `ar_track_avlar` (http://wiki.ros.org/ar_track_alvar). It works pretty well most of the times in a well lit room, but sometimes it mis-detects the position of the tag & results in the robot driving to the wrong location.
 
-## Tag detection is not 100% accurate
+We also experimented with another tag detection engine - April tag (http://wiki.ros.org/apriltag_ros), which seems to be more accurate, but at the cost of slower detection speed. It runs well on local laptop, but on server it's pretty laggy, making real-time detection & driving difficult. We could probably improve the networking settings to reduce the latency, but haven't figured it out.
 
+To try April tag detection, do this:
+
+- Install apriltag_ros on server and your laptop, following this instruction: https://github.com/AprilRobotics/apriltag_ros#quickstart
+
+- Comment line 24 & uncomment line 22 in this file: https://github.com/Cornell-Tech-Turtlebot/object_tracking/blob/master/scripts/detect_trashcan.py
+
+- Print tag #10 from this file, then stick it to the trashcan: https://github.com/Cornell-Tech-Turtlebot/object_tracking/blob/master/markers/apriltags1-20.pdf
+
+- Measure the size of 1 side of the black square on your printed tag, in meter. Then change the number in line 22 of this file to that number you've just measured: https://github.com/Cornell-Tech-Turtlebot/object_tracking/blob/master/markers/tags.yaml
+
+- Copy these 2 files to folder `/catkin_ws/src/apriltag_ros/config/`:
+        
+        https://github.com/Cornell-Tech-Turtlebot/object_tracking/blob/master/markers/tags.yaml
+        https://github.com/Cornell-Tech-Turtlebot/object_tracking/blob/master/markers/settings.yaml
+
+- In Section 5.1, replace this command:
+
+        roslaunch object_tracking ar_track_alvar.launch
+
+with this command:
+
+        roslaunch object_tracking apriltag_ros.launch
 
 
 
