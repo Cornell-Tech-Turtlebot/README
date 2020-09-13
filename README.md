@@ -1,6 +1,6 @@
 # 1. Introduction
 
-As of September 2020, our Trash-picking Turtlebot can autonomously navigate around an unknown building, draw a map, detect & pickup water bottle, then drop into trashcan. See the videos here: https://drive.google.com/drive/folders/1VAmSW8Z5EUJZb4Y-RXb9zj3yCQSbMGp9
+As of September 2020, our Trash-picking Turtlebot can autonomously navigate around an unknown building, draw a map, detect & pickup water bottle then drop into trashcan. See the video here: https://drive.google.com/drive/folders/1VAmSW8Z5EUJZb4Y-RXb9zj3yCQSbMGp9
 
 It requires these packages:
 - Object tracking (https://github.com/Cornell-Tech-Turtlebot/object_tracking): Detect different objects including water bottle & trashcan. Localize positions of those objects on the map. Drive the robot toward those objects.
@@ -211,6 +211,11 @@ To try April tag detection, do this:
      with this command:
 
         roslaunch object_tracking apriltag_ros.launch
+
+- In RViz, click `Add` button --> `By topic` --> `tag_detections_image` --> `Image`. Rviz will then display the robot's camera, which will show the the detected April tag if the tag is in front of the camera.
+
+- Now you can continue to run the rest of the robot like usual. The robot will now detect April tag instead of AR tag to find the trashcan.
+
 
 
 
