@@ -208,7 +208,7 @@ To try April tag detection, do this:
 
         roslaunch object_tracking ar_track_alvar.launch
 
-with this command:
+        with this command:
 
         roslaunch object_tracking apriltag_ros.launch
 
