@@ -175,16 +175,16 @@ To launch `orchestrator` package & `patrol` package, run each of this in a new T
 
 # 7. Room for improvement
 
-## Make .rosinstall file to install all necessary packages at once
+## 7.1 Make .rosinstall file to install all necessary packages at once
 As you can see in Section 2, we need to install a bunch of packages. It's better to group them into a rosinstall file, so we can just run 1 file to install all of them.
 
-## Make launch file to launch all neccessary packages at once
+## 7.2 Make launch file to launch all neccessary packages at once
 As you can see, we need to launch a bunch of packages in seperate Terminal window. It's better to group them into 1 launch file and launch all at once.
 
-## Finish orchestrator package
+## 7.3 Finish orchestrator package
 As mentioned in section 6, we have written the code but haven't tested. We entrusted it to you to finish it :)
 
-## Tag detection is not accurate sometimes
+## 7.4 Tag detection is not accurate sometimes
 Currently, we are using AR tag detection engine called `ar_track_avlar` (http://wiki.ros.org/ar_track_alvar). It works pretty well most of the times in a well lit room, but sometimes it mis-detects the position of the tag & results in the robot driving to the wrong location.
 
 We also experimented with another tag detection engine - April tag (http://wiki.ros.org/apriltag_ros), which seems to be more accurate, but at the cost of slower detection speed. It runs well on local laptop, but on server it's pretty laggy, making real-time detection & driving difficult. We could probably improve the networking settings to reduce the latency, but haven't figured it out.
