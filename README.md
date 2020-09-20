@@ -23,8 +23,6 @@ https://emanual.robotis.com/docs/en/platform/turtlebot3/manipulation/#manipulati
 Follow this to get your laptop into the same VPN as the robot & server: 
 https://github.com/travers-rhodes/gazebo_tensorflow_turtlebot_docker#connection-instructions
 
-If new servos are being used for the OpenManipulator, follow these instructions to program the Dynamixel servos:
-https://github.com/Cornell-Tech-Turtlebot/DINAMIXEL_OPEN_MANIPULATOR_CONFIGURATION
 
 
 
@@ -41,6 +39,9 @@ In case you need to setup the robots again, follow this tutorial:
 - Calibrate the camera (important for tag detection to work): 
 https://github.com/UbiquityRobotics/raspicam_node
 http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration
+
+If new servos are being used for the OpenManipulator, follow these instructions to program the Dynamixel servos:
+- https://github.com/Cornell-Tech-Turtlebot/DINAMIXEL_OPEN_MANIPULATOR_CONFIGURATION
 
 ## 2.3 Server (optional):
 The workspace `/catkin_ws` on server is fully setup, so it's best to just use it. If you decide to create a new workspace or virtual machine, remember to backup the previous `/catkin_ws` folder. There might be certain small configs we made to get things working, and we might miss it in this documentation. It's pretty hard to config things to make the server & robot work smoothly!
