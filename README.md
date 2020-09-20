@@ -55,7 +55,7 @@ In case you need to setup it again, follow this. Again, this may not include som
         - Clone [this repo](https://github.com/ros-planning/moveit) into your workspace's src folder.
         - Find the move_group.py file in the repo ("WORKSPACE DIR"/src/moveit/moveit_commander/src/moveit_commander) and change the "wait_for_servers" parameter under __init__ to =50.0 (or higher value, as required).
         - Remove the original moveit package installed with ROS Kinetic (located in "DRIVE ROOT DIR"/opt/ros/kinetic/lib/python2.7/dist-packages/
-        - Make your workspace (cd to workspace, then catkin_make).
+        
 
 
 - Install necessary packages:
