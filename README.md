@@ -23,6 +23,11 @@ https://emanual.robotis.com/docs/en/platform/turtlebot3/manipulation/#manipulati
 Follow this to get your laptop into the same VPN as the robot & server: 
 https://github.com/travers-rhodes/gazebo_tensorflow_turtlebot_docker#connection-instructions
 
+If new servos are being used for the OpenManipulator, follow these instructions to program the Dynamixel servos:
+https://github.com/Cornell-Tech-Turtlebot/DINAMIXEL_OPEN_MANIPULATOR_CONFIGURATION
+
+
+
 ## 2.2 Robot (optional):
 The robots are already fully setup. The passwords to SSH into the robots:
 
@@ -45,6 +50,13 @@ In case you need to setup it again, follow this. Again, this may not include som
 - Setup ROS on server:
         https://emanual.robotis.com/docs/en/platform/turtlebot3/setup/#setup
         https://emanual.robotis.com/docs/en/platform/turtlebot3/manipulation/#manipulation
+        
+        ## 2.3.1 Build MoveIt Package from Source
+        - Clone [this repo](https://github.com/ros-planning/moveit) into your workspace's src folder.
+        - Find the move_group.py file in the repo ("WORKSPACE DIR"/src/moveit/moveit_commander/src/moveit_commander) and change the "wait_for_servers" parameter under __init__ to =50.0 (or higher value, as required).
+        - Remove the original moveit package installed with ROS Kinetic (located in "DRIVE ROOT DIR"/opt/ros/kinetic/lib/python2.7/dist-packages/
+        - Make your workspace (cd to workspace, then catkin_make).
+
 
 - Install necessary packages:
 
