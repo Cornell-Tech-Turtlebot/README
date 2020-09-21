@@ -78,6 +78,17 @@ In case you need to setup it again, follow this. Again, this may not include som
 
    If `catkin_build` doesn't work, try `catkin_make_isolated` then `source devel_isolated/setup.bash`
    
+   You also may want something like the following at the end of your `~/.bashrc`
+   ```
+   export TURTLEBOT3_MODEL=waffle_pi
+   export ROS_MASTER_URI=http://10.8.0.1:11311
+   export ROS_IP=10.8.0.1
+   # TSR's note: these next two are especially surprising. I've never done a "devel_isolated" before,
+   # and I don't know why you need to specify this path to python
+   source /catkin_ws/devel_isolated/setup.bash
+   export C_INCLUDE_PATH=/usr/include/python2.7
+   ```
+   
 ## 2.4 Physical equipments:
 You need 1 water bottle & 1 trashcan. Print this AR tag and stick it to the trashcan:
 https://github.com/Cornell-Tech-Turtlebot/object_tracking/blob/master/markers/MarkerData_0.png
