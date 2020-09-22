@@ -79,13 +79,14 @@ In case you need to setup it again, follow this. Again, this may not include som
 
    If `catkin_build` doesn't work, try `catkin_make_isolated` then `source devel_isolated/setup.bash`
    
- - You also may want add this at the end of your `~/.bashrc`
-   ```
-   export TURTLEBOT3_MODEL=waffle_pi
-   export ROS_MASTER_URI=http://10.8.0.1:11311
-   export ROS_IP=10.8.0.1
-   export C_INCLUDE_PATH=/usr/include/python2.7
-   ```
+ - Add this at the end of your `~/.bashrc` file:
+ 
+        export TURTLEBOT3_MODEL=waffle_pi
+        export ROS_MASTER_URI=http://10.8.0.1:11311
+        export ROS_IP=10.8.0.1
+        export C_INCLUDE_PATH=/usr/include/python2.7
+        
+   Then `source ~/.bashrc`
    
 ## 2.4 Physical equipments:
 You need 1 water bottle & 1 trashcan. Print this AR tag and stick it to the trashcan:
