@@ -52,13 +52,6 @@ In case you need to setup it again, follow this. Again, this may not include som
         https://emanual.robotis.com/docs/en/platform/turtlebot3/setup/#setup
         https://emanual.robotis.com/docs/en/platform/turtlebot3/manipulation/#manipulation
         
-        ## 2.3.1 Build MoveIt Package from Source
-        - Clone [this repo](https://github.com/ros-planning/moveit) into your workspace's src folder.
-        - Find the move_group.py file in the repo ("WORKSPACE DIR"/src/moveit/moveit_commander/src/moveit_commander) and change the "wait_for_servers" parameter under __init__ to =50.0 (or higher value, as required).
-        - Remove the original moveit package installed with ROS Kinetic (located in "DRIVE ROOT DIR"/opt/ros/kinetic/lib/python2.7/dist-packages/
-        
-
-
 - Install necessary packages:
 
         cd /catkin_ws/src
@@ -69,7 +62,15 @@ In case you need to setup it again, follow this. Again, this may not include som
         git clone https://github.com/Cornell-Tech-Turtlebot/bottle_manipulator.git
         git clone https://github.com/Cornell-Tech-Turtlebot/patrol.git
         git clone https://github.com/Cornell-Tech-Turtlebot/orchestrator
+
+- Build MoveIt Package from Source:
+               
+        git clone https://github.com/ros-planning/moveit.git
+                
+  Find the move_group.py file in the repo (catkin_ws/src/moveit/moveit_commander/src/moveit_commander) and change the `wait_for_servers` parameter under `__init__` to `=50.0` (or higher value, as required).
         
+  Remove the original moveit package installed with ROS Kinetic located in `/opt/ros/kinetic/lib/python2.7/dist-packages/`
+
  - Build the workspace:
  
         cd /catkin_ws
@@ -78,14 +79,11 @@ In case you need to setup it again, follow this. Again, this may not include som
 
    If `catkin_build` doesn't work, try `catkin_make_isolated` then `source devel_isolated/setup.bash`
    
-   You also may want something like the following at the end of your `~/.bashrc`
+ - You also may want add this at the end of your `~/.bashrc`
    ```
    export TURTLEBOT3_MODEL=waffle_pi
    export ROS_MASTER_URI=http://10.8.0.1:11311
    export ROS_IP=10.8.0.1
-   # TSR's note: these next two are especially surprising. I've never done a "devel_isolated" before,
-   # and I don't know why you need to specify this path to python
-   source /catkin_ws/devel_isolated/setup.bash
    export C_INCLUDE_PATH=/usr/include/python2.7
    ```
    
