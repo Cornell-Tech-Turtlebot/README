@@ -1,6 +1,10 @@
 # 1. Introduction
 
-As of September 2020, our Trash-picking Turtlebot can autonomously navigate around an unknown building, draw a map, detect & pickup water bottle then drop into trashcan. See the video here: https://drive.google.com/drive/folders/1VAmSW8Z5EUJZb4Y-RXb9zj3yCQSbMGp9
+As of September 2020, our Trash-picking Turtlebot can autonomously navigate around an unknown building, draw a map, detect & pickup water bottle then drop into trashcan. See the video here: 
+
+https://youtu.be/wEwvhGS8GY8
+
+https://drive.google.com/drive/folders/1VAmSW8Z5EUJZb4Y-RXb9zj3yCQSbMGp9
 
 ![Trash-picking Turltlebot](/images/trash-bot.png)
 
