@@ -248,6 +248,8 @@ To try April tag detection, do this:
 
 - In RViz, click `Add` button --> `By topic` --> `tag_detections_image` --> `Image`. Rviz will then display the robot's camera, which will show the the detected April tag if the tag is in front of the camera.
 
+![Rviz April tag](/images/rviz-april.png)
+
 - Now you can continue to run the rest of the robot like usual. The robot will now detect April tag instead of AR tag to find the trashcan.
 
 
