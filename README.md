@@ -124,6 +124,8 @@ Run each command below in a separate Terminal window:
 
 When Rviz opens, click `File` --> `Open Config` --> navigate to `/catkin_ws/src/object_tracking/rviz/` --> select `object_tracking.rviz`. You will see Rviz interface displaying all neccessary information.
 
+![Rviz](/images/rviz.png)
+
 You can control the robot using teleop, in the Terminal window that you run `roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch`.
 
 Better yet, you can use Rviz to set a location in the map for the robot to move there. Follow this instruction:
