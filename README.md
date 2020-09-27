@@ -94,6 +94,9 @@ In case you need to setup it again, follow this. Again, this may not include som
 You need 1 water bottle & 1 trashcan. Print this AR tag and stick it to the trashcan:
 https://github.com/Cornell-Tech-Turtlebot/object_tracking/blob/master/markers/MarkerData_0.png
 
+![Trashcan](/images/trash-can.png)
+![Bottle](/images/bottle.png)
+
 Measure the side of the black square of the AR tag, in centimeter. Then run this on the **Server**:
 
         cd /catkin_ws/src/object_tracking/launch/ar_track_alvar.launch
