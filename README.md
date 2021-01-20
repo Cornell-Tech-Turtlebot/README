@@ -35,6 +35,7 @@ https://github.com/travers-rhodes/gazebo_tensorflow_turtlebot_docker#connection-
 ## 2.2 Robot (optional):
 The robots are already fully setup. The passwords to SSH into the robots:
 
+- Burger: `turtlebot`
 - Waffle Pi: `admin`
 - Waffle Pi with Open Manipulator: `turtlebot`
 
